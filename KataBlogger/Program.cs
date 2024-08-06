@@ -1,3 +1,5 @@
+using AspNetCoreHero.ToastNotification;
+using AspNetCoreHero.ToastNotification.Extensions;
 using KataBlogger.Data;
 using KataBlogger.Models;
 using KataBlogger.Utilities;
@@ -25,6 +27,8 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
 
 builder.Services.AddScoped<IDbInitializer, DbInitializer>();
 
+builder.Services.AddNotyf(config=> { config.DurationInSeconds = 10;config.IsDismissable = true;config.Position = NotyfPosition.BottomRight; });
+
 var app = builder.Build();
 
 DataSeeding();
@@ -40,7 +44,11 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
+app.UseNotyf();
+
 app.UseRouting();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 

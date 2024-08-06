@@ -1,3 +1,4 @@
+using KataBlogger.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace KataBlogger.Areas.Admin.Controllers
@@ -13,7 +14,7 @@ namespace KataBlogger.Areas.Admin.Controllers
         [HttpGet("Login")]
         public IActionResult Login()
         {
-            return View();
+            return View(new LoginVM());
         }
     }
 }
