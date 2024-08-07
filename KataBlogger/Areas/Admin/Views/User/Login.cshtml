@@ -2,7 +2,7 @@
 
 @{
     Layout = "_LoginLayout";
-    @ViewData["Title"] = "Login";
+    ViewData["Title"] = "Login";
 }
 
 
@@ -23,13 +23,15 @@
                             </div>
                             <form class="user" method="post" asp-action="Login">
                                 <div class="form-group">
-                                    <input asp-for="Username" type="email" class="form-control form-control-user"
+                                    <input asp-for="Username" type="text" class="form-control form-control-user"
                                         id="exampleInputEmail" aria-describedby="emailHelp"
-                                        placeholder="Enter Email Address...">
+                                        placeholder="Enter Username...">
+                                    <span asp-validation-for="Username" class="text-danger"></span>
                                 </div>
                                 <div class="form-group">
-                                    <input aps-for="Password" type="password" class="form-control form-control-user"
+                                    <input asp-for="Password" type="password" class="form-control form-control-user"
                                         id="exampleInputPassword" placeholder="Password">
+                                    <span asp-validation-for="Password" class="text-danger"></span>
                                 </div>
                                 <div class="form-group">
                                     <div class="custom-control custom-checkbox small">
@@ -38,7 +40,7 @@
                                             Me</label>
                                     </div>
                                 </div>
-                                <input type="submit" class="btn btn-primary btn-user btn-block" value="Login"/>
+                                <input type="submit" class="btn btn-primary btn-user btn-block" value="Login">
                                 
                             </form>
                             <hr>

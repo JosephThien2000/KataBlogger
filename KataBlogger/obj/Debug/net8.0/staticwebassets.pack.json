@@ -49,6 +49,10 @@
       "PackagePath": "staticwebassets/dashboard/css/sb-admin-2.min.css"
     },
     {
+      "Id": "/Users/josephthien/Desktop/KataBlogger/KataBlogger/wwwroot/dashboard/img/kata-blogger-high-resolution-logo-black.png",
+      "PackagePath": "staticwebassets/dashboard/img/kata-blogger-high-resolution-logo-black.png"
+    },
+    {
       "Id": "/Users/josephthien/Desktop/KataBlogger/KataBlogger/wwwroot/dashboard/img/undraw_posting_photo.svg",
       "PackagePath": "staticwebassets/dashboard/img/undraw_posting_photo.svg"
     },

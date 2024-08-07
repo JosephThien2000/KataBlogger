@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "1E1jiWZkoUSHRHM6f9ARB3d/zwzVpXqB/4uncJJArR8=",
+  "Hash": "4igxnIAfM2Nrxl6u/ZMgbIQTKbriRaSxddkt5Lf/Nno=",
   "Source": "KataBlogger",
   "BasePath": "_content/KataBlogger",
   "Mode": "Default",
@@ -1478,6 +1478,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/dashboard/css/sb-admin-2.min.css"
+    },
+    {
+      "Identity": "/Users/josephthien/Desktop/KataBlogger/KataBlogger/wwwroot/dashboard/img/kata-blogger-high-resolution-logo-black.png",
+      "SourceId": "KataBlogger",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/josephthien/Desktop/KataBlogger/KataBlogger/wwwroot/",
+      "BasePath": "_content/KataBlogger",
+      "RelativePath": "dashboard/img/kata-blogger-high-resolution-logo-black.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/dashboard/img/kata-blogger-high-resolution-logo-black.png"
     },
     {
       "Identity": "/Users/josephthien/Desktop/KataBlogger/KataBlogger/wwwroot/dashboard/img/undraw_posting_photo.svg",
