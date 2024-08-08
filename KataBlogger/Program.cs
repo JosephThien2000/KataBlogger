@@ -5,6 +5,7 @@ using KataBlogger.Models;
 using KataBlogger.Utilities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 
 
 
@@ -19,6 +20,11 @@ builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlSer
 
 builder.Services.AddMvc();
 builder.Services.AddEndpointsApiExplorer();
+
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.LoginPath = "/login";
+});
 
 // Initialize the database
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>()

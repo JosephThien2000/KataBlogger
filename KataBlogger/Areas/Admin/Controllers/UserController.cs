@@ -1,6 +1,8 @@
 using AspNetCoreHero.ToastNotification.Abstractions;
 using KataBlogger.Models;
 using KataBlogger.ViewModels;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authorization.Infrastructure;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -20,9 +22,21 @@ namespace KataBlogger.Areas.Admin.Controllers
             _signInManager = signInManager;
             _notification = notyfService;
         }
-        public IActionResult Index()
+
+        [Authorize(Roles="Admin")]
+        [HttpGet]
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var users = await _userManager.Users.ToListAsync();
+
+            var vm = users.Select(x => new UserVM()
+            {
+                Id = x.Id,
+                FirstName = x.FirstName,
+                LastName = x.LastName,
+                UserName = x.UserName
+            }).ToList();
+            return View(vm);
         }
 
         [HttpGet("Login")]
