@@ -49,6 +49,24 @@ namespace KataBlogger.Areas.Admin.Controllers
             return View(vm);
         }
 
+        [Authorize(Roles = "Admin")]
+        [HttpGet]
+        public async Task<IActionResult> ResetPassword(string id)
+        {
+            var existingUser = await _userManager.FindByIdAsync(id);
+            if (existingUser == null)
+            {
+                _notification.Error("User does not exsits");
+                return View();
+            }
+            var vm = new ResetPasswordVM()
+            {
+                Id = existingUser.Id,
+                UserName = existingUser.UserName
+            };
+            return View(vm);
+        }
+
         [Authorize(Roles ="Admin")]
         [HttpPost]
         public async Task<IActionResult> ResetPassword(ResetPasswordVM vm)

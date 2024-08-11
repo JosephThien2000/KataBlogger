@@ -26,6 +26,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = /Users/josephthien/Desktop/KataBlogger/KataBlogger
 build_property._RazorSourceGeneratorDebug = 
 
+[/Users/josephthien/Desktop/KataBlogger/KataBlogger/Areas/Admin/Views/Post/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvQWRtaW4vVmlld3MvUG9zdC9DcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/josephthien/Desktop/KataBlogger/KataBlogger/Areas/Admin/Views/Post/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXMvQWRtaW4vVmlld3MvUG9zdC9JbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

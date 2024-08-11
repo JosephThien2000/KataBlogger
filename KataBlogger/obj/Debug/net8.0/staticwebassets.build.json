@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "4igxnIAfM2Nrxl6u/ZMgbIQTKbriRaSxddkt5Lf/Nno=",
+  "Hash": "TAAN27v10UzxJmqXAsWs/IkBAxlJe4RUIP7p6T79gcM=",
   "Source": "KataBlogger",
   "BasePath": "_content/KataBlogger",
   "Mode": "Default",
@@ -37825,6 +37825,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/lib/jquery/LICENSE.txt"
+    },
+    {
+      "Identity": "/Users/josephthien/Desktop/KataBlogger/KataBlogger/wwwroot/thumbnails/default_image.png",
+      "SourceId": "KataBlogger",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/josephthien/Desktop/KataBlogger/KataBlogger/wwwroot/",
+      "BasePath": "_content/KataBlogger",
+      "RelativePath": "thumbnails/default_image.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/thumbnails/default_image.png"
     }
   ]
 }

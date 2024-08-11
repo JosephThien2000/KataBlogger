@@ -7701,6 +7701,10 @@
       "PackagePath": "staticwebassets/lib/jquery/dist/jquery.min.map"
     },
     {
+      "Id": "/Users/josephthien/Desktop/KataBlogger/KataBlogger/wwwroot/thumbnails/default_image.png",
+      "PackagePath": "staticwebassets/thumbnails/default_image.png"
+    },
+    {
       "Id": "obj/Debug/net8.0/staticwebassets/msbuild.KataBlogger.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },
