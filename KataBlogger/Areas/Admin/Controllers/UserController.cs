@@ -1,8 +1,8 @@
 using AspNetCoreHero.ToastNotification.Abstractions;
 using KataBlogger.Models;
+using KataBlogger.Utilities;
 using KataBlogger.ViewModels;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Authorization.Infrastructure;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -34,8 +34,95 @@ namespace KataBlogger.Areas.Admin.Controllers
                 Id = x.Id,
                 FirstName = x.FirstName,
                 LastName = x.LastName,
-                UserName = x.UserName
+                UserName = x.UserName,
+                Email = x.Email,
+
             }).ToList();
+            // assigning roles
+            foreach (var user in vm)
+            {
+                var singleUser = await _userManager.FindByIdAsync(user.Id);
+                var role = await _userManager.GetRolesAsync(singleUser);
+                user.Role = role.FirstOrDefault();
+            }
+
+
+            return View(vm);
+        }
+
+        [Authorize(Roles ="Admin")]
+        [HttpPost]
+        public async Task<IActionResult> ResetPassword(ResetPasswordVM vm)
+        {
+            if(!ModelState.IsValid) { return View(vm); }
+            var existingUser = await _userManager.FindByIdAsync(vm.Id);
+            if(existingUser == null)
+            {
+                _notification.Error("User not found");
+                return View(vm);
+
+            }
+            var token = await _userManager.GeneratePasswordResetTokenAsync(existingUser);
+            var result = await _userManager.ResetPasswordAsync(existingUser, token, vm.NewPassword);
+            if(result.Succeeded)
+            {
+                _notification.Success("Password reset successfully");
+                return RedirectToAction(nameof(Index));
+            }
+            return View(vm);
+        }
+        
+
+        [Authorize(Roles ="Admin")]     
+        [HttpGet]
+        public IActionResult Register()
+        {
+            return View(new RegisterVM());
+        }
+
+        [Authorize(Roles ="Admin")]
+        [HttpPost]
+        public async Task<IActionResult> Register(RegisterVM vm)
+        {
+            if(!ModelState.IsValid) { return View(vm); }
+            var checkUserByEmail = await _userManager.FindByEmailAsync(vm.Email);
+            if(checkUserByEmail != null)
+            {
+                _notification.Error("Email already exists");
+                return View(vm);
+            }
+            var  checkUserByUsername = await _userManager.FindByEmailAsync(vm.UserName);
+            if(checkUserByUsername != null)
+            {
+                _notification.Error("Username already exists");
+                return View(vm);
+            }
+
+            var applicationUser = new ApplicationUser()
+            {
+                Email = vm.Email,
+                UserName = vm.UserName,
+                FirstName = vm.FirstName,
+                LastName = vm.LastName
+                
+            };
+
+            var result = await _userManager.CreateAsync(applicationUser, vm.Password);
+            if(result.Succeeded)
+            {
+                if(vm.IsAdmin)
+                {
+                    await _userManager.AddToRoleAsync(applicationUser, WebsiteRoles.WebsiteAdmin);
+                }
+                else
+                {
+                    await _userManager.AddToRoleAsync(applicationUser, WebsiteRoles.WebsiteAuthor);
+                }
+
+                _notification.Success("User registered successfully");
+                return RedirectToAction("Index", "User", new {area="Admin"});
+            }
+
             return View(vm);
         }
 
@@ -48,7 +135,6 @@ namespace KataBlogger.Areas.Admin.Controllers
             }
             return RedirectToAction("Index", "User", new {area="Admin"});
         }
-
 
         [HttpPost("Login")]
         public async Task<IActionResult> Login(LoginVM vm)
@@ -70,6 +156,7 @@ namespace KataBlogger.Areas.Admin.Controllers
 
             await _signInManager.PasswordSignInAsync(vm.Username, vm.Password, vm.RememberMe, true);
             _notification.Success("Login Successful");
+
             return RedirectToAction("Index", "User", new {area="Admin"});
         }
 

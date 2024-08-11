@@ -2,6 +2,6 @@ namespace KataBlogger.Utilities
 {
     public interface IDbInitializer
     {
-       void Initialize(); 
+        void Initialize();
     }
 }

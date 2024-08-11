@@ -1,6 +1,6 @@
 using KataBlogger.Data;
-using Microsoft.AspNetCore.Identity;
 using KataBlogger.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace KataBlogger.Utilities
 {
@@ -9,10 +9,9 @@ namespace KataBlogger.Utilities
         private readonly ApplicationDbContext _context;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
-
         public DbInitializer(ApplicationDbContext context,
-                                UserManager<ApplicationUser> userManager,
-                                RoleManager<IdentityRole> roleManager)
+                               UserManager<ApplicationUser> userManager,
+                               RoleManager<IdentityRole> roleManager)
         {
             _context = context;
             _userManager = userManager;
@@ -29,15 +28,16 @@ namespace KataBlogger.Utilities
                 {
                     UserName = "admin@gmail.com",
                     Email = "admin@gmail.com",
-                    FirstName = "Super",
-                    LastName = "Admin",
-                }, "Admin@0011").Wait();
+                    FirstName ="Super",
+                    LastName = "Admin"
+                },"Admin@0011").Wait();
 
-                var appUser = _context.ApplicationUsers.FirstOrDefault(x=>x.Email=="admin@gmail.com");
-                if(appUser != null)
+                var appUser = _context.ApplicationUsers!.FirstOrDefault(x => x.Email == "admin@gmail.com");
+                if (appUser != null)
                 {
                     _userManager.AddToRoleAsync(appUser, WebsiteRoles.WebsiteAdmin).GetAwaiter().GetResult();
                 }
+
 
                 var listOfPages = new List<Page>()
                 {
@@ -46,21 +46,21 @@ namespace KataBlogger.Utilities
                         Title = "About Us",
                         Slug = "about"
                     },
-
                     new Page()
                     {
                         Title = "Contact Us",
                         Slug = "contact"
                     },
-
                     new Page()
                     {
                         Title = "Privacy Policy",
                         Slug = "privacy"
-                    },
-                };
-                _context.Pages.AddRange(listOfPages);
-                _context.SaveChanges();
+                    }
+                 };
+
+                 _context.Pages.AddRange(listOfPages);
+                 _context.SaveChanges();
+
             }
         }
     }

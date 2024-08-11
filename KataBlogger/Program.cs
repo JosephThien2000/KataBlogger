@@ -1,8 +1,10 @@
+using System.Configuration;
 using AspNetCoreHero.ToastNotification;
 using AspNetCoreHero.ToastNotification.Extensions;
 using KataBlogger.Data;
 using KataBlogger.Models;
 using KataBlogger.Utilities;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
@@ -76,3 +78,4 @@ void DataSeeding()
         DbInitialize.Initialize();
     }
 }
+
