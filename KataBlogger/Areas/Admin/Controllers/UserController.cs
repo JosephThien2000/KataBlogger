@@ -36,7 +36,6 @@ namespace KataBlogger.Areas.Admin.Controllers
                 LastName = x.LastName,
                 UserName = x.UserName,
                 Email = x.Email,
-
             }).ToList();
             // assigning roles
             foreach (var user in vm)
@@ -129,11 +128,11 @@ namespace KataBlogger.Areas.Admin.Controllers
         [HttpGet("Login")]
         public IActionResult Login()
         {
-            if(!HttpContext.User.Identity.IsAuthenticated)
+            if(!HttpContext.User.Identity!.IsAuthenticated)
             {
                 return View(new LoginVM());
             }
-            return RedirectToAction("Index", "User", new {area="Admin"});
+            return RedirectToAction("Index", "Post", new {area="Admin"});
         }
 
         [HttpPost("Login")]
@@ -157,15 +156,23 @@ namespace KataBlogger.Areas.Admin.Controllers
             await _signInManager.PasswordSignInAsync(vm.Username, vm.Password, vm.RememberMe, true);
             _notification.Success("Login Successful");
 
-            return RedirectToAction("Index", "User", new {area="Admin"});
+            return RedirectToAction("Index", "Post", new {area="Admin"});
         }
 
         [HttpPost]
+        [Authorize]
         public IActionResult Logout()
         {
             _signInManager.SignOutAsync();
             _notification.Success("Logout Successful");
             return RedirectToAction("Index", "Home", new {area=""});
+        }
+
+        [HttpGet("AccessDenied")]
+        [Authorize]
+        public IActionResult AccessDenied()
+        {
+            return View();
         }
     }
 }
