@@ -41,16 +41,16 @@
       "PackagePath": "staticwebassets/css/site.css"
     },
     {
+      "Id": "/Users/josephthien/Desktop/KataBlogger/KataBlogger/wwwroot/dashboard/css/logo.png",
+      "PackagePath": "staticwebassets/dashboard/css/logo.png"
+    },
+    {
       "Id": "/Users/josephthien/Desktop/KataBlogger/KataBlogger/wwwroot/dashboard/css/sb-admin-2.css",
       "PackagePath": "staticwebassets/dashboard/css/sb-admin-2.css"
     },
     {
       "Id": "/Users/josephthien/Desktop/KataBlogger/KataBlogger/wwwroot/dashboard/css/sb-admin-2.min.css",
       "PackagePath": "staticwebassets/dashboard/css/sb-admin-2.min.css"
-    },
-    {
-      "Id": "/Users/josephthien/Desktop/KataBlogger/KataBlogger/wwwroot/dashboard/img/kata-blogger-high-resolution-logo-black.png",
-      "PackagePath": "staticwebassets/dashboard/img/kata-blogger-high-resolution-logo-black.png"
     },
     {
       "Id": "/Users/josephthien/Desktop/KataBlogger/KataBlogger/wwwroot/dashboard/img/undraw_posting_photo.svg",
