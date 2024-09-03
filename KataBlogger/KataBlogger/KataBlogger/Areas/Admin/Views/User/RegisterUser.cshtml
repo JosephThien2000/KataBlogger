@@ -1,0 +1,76 @@
+@model KataBlogger.ViewModels.RegisterViewModel;
+@* @model KataBlogger.ViewModels.LoginVM *@
+
+@{
+    Layout = "_LoginLayout";
+    ViewData["Title"] = "Register";
+}
+
+
+<!-- Outer Row -->
+<div class="row justify-content-center">
+
+    <div class="col-xl-10 col-lg-12 col-md-9">
+
+        <div class="card o-hidden border-0 shadow-lg my-5">
+            <div class="card-body p-0">
+                <!-- Nested Row within Card Body -->
+                <div class="row">
+                    <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+                    <div class="col-lg-6">
+                        <div class="p-5">
+                            <div class="text-center">
+                                <h1 class="h4 text-gray-900 mb-4">Create New Account!</h1>
+                            </div>
+                            <form class="user" method="post" asp-action="RegisterUser">
+                                <div class="form-group">
+                                    <input asp-for="FirstName" type="text" class="form-control form-control-user"
+                                        placeholder="Enter Firstname...">
+                                    <span asp-validation-for="FirstName" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <input asp-for="LastName" type="text" class="form-control form-control-user"
+                                        placeholder="Enter Lastname...">
+                                    <span asp-validation-for="LastName" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <input asp-for="Email" type="email" class="form-control form-control-user"
+                                        placeholder="Enter your email...">
+                                    <span asp-validation-for="Email" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <input asp-for="UserName" type="text" class="form-control form-control-user"
+                                        placeholder="Enter your Username...">
+                                    <span asp-validation-for="UserName" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <input asp-for="Password" type="password" class="form-control form-control-user"
+                                        placeholder="Enter your Password...">
+                                    <span asp-validation-for="Password" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <input type="checkbox" class="custom-checkbox" asp-for="IsAdmin"/>
+                                    <label>Is Admin?</label>
+                                </div>                               
+
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary btn-user btn-block">Register</button>
+                                </div>
+                            </form>
+                            <hr>
+                            <div class="text-center">
+                                <a class="small" asp-action="Login" asp-controller="User" asp-area="Admin">Have account already? Sign In now!</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
